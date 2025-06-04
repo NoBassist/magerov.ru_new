@@ -1,0 +1,76 @@
+// /globals/Translations.ts
+import type { GlobalConfig } from 'payload';
+
+const Translations: GlobalConfig = {
+  slug: 'translations',                 // /api/globals/translations
+  label: 'Site Translations',
+  access: { read: () => true },         // public read, no auth needed for Next
+  fields: [
+    {
+      type: 'tabs',
+      tabs: [
+        // ---------- HERO ----------
+        {
+          label: 'Hero',
+          fields: [
+            {
+              type: 'group',
+              name: 'hero',
+              label: 'Hero',
+              fields: [
+                {
+                  type: 'group',
+                  name: 'section1',
+                  label: 'Section 1',
+                  fields: [
+                    { name: 'text1', type: 'richText', localized: true },
+                    {
+                      type: 'array',
+                      name: 'text2',          // hero.section1.text2[]
+                      label: 'Looping text',
+                      localized: true,
+                      labels: { singular: 'Phrase', plural: 'Phrases' },
+                      minRows: 1,
+                      fields: [
+                        { name: 'value', label: 'Phrase', type: 'text' },
+                      ],
+                    },
+                    { name: 'text3', type: 'text', localized: true },
+                  ],
+                },
+                {
+                  type: 'group',
+                  name: 'section2',
+                  label: 'Section 2',
+                  fields: [
+                    { name: 'text1', type: 'text', localized: true },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+
+        // ---------- ABOUT ----------
+        {
+          label: 'About',
+          fields: [
+            {
+              type: 'group',
+              name: 'about',
+              label: 'About',
+              fields: [
+                { name: 'title', type: 'text', localized: true },
+                { name: 'text', type: 'text', localized: true },
+              ],
+            },
+          ],
+        },
+
+        // --- add more tabs/groups for other sections here ---
+      ],
+    },
+  ],
+};
+
+export default Translations;

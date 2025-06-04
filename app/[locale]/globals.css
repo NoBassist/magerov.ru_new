@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*:root {*/
+/*  --background: #ffffff;*/
+/*  --foreground: #171717;*/
+/*}*/
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --background: #0a0a0a;*/
+/*    --foreground: #ededed;*/
+/*  }*/
+/*}*/
+
+body {
+  background-color: #030303;
+}
+
+/*@layer utilities {*/
+/*  .text-balance {*/
+/*    text-wrap: balance;*/
+/*  }*/
+/*}*/
+
+
+@font-face {
+  font-family: 'Unbounded';
+  src: url('../fonts/Unbounded-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* Указываем диапазон весов для переменного шрифта */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/InterTight-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* Указываем диапазон весов для переменного шрифта */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('../fonts/Caveat-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* Указываем диапазон весов для переменного шрифта */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('../fonts/Nunito-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* Указываем диапазон весов для переменного шрифта */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('../fonts/Nunito-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* Указываем диапазон весов для переменного шрифта */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Robotron';
+  src: url('../fonts/robotrondotmatrix 2.otf') format('truetype');
+  font-weight: 100 900; /* Указываем диапазон весов для переменного шрифта */
+  font-style: normal;
+}
+
+@keyframes blur-in {
+  from {
+    filter: blur(0px);
+  }
+  to {
+    filter: blur(4px);
+  }
+}
+
+.blur-on-hover {
+  transition: filter 0.3s ease-in-out;
+}
+
+.group:hover .blur-on-hover {
+  animation: blur-in 0.3s forwards;
+}
