@@ -1,4 +1,3 @@
-import { getPayloadServer } from '@/lib/payloadServer';
 
 import Navbar from "@/components/ui/Navbar";
 import Hero from "@/components/Hero";
@@ -8,19 +7,13 @@ import Music from "@/components/Music";
 import Contacts from "@/components/Contacts";
 
 
-export default async function Home({ params: { lang } }: { params: { lang: 'en' | 'ru' } }) {
-    const payload = await getPayloadServer();
-
-    const t = await payload.findGlobal({
-        slug: 'translations',
-        locale: lang,
-    });
+export default async function Home() {
 
     return (
         <>
         <main className= 'overflow-hidden'>
             {/*<Navbar />*/}
-            <Hero data={t.hero} />
+            <Hero />
             {/*<About />*/}
             {/*<Field />*/}
             {/*<Music />*/}
@@ -28,8 +21,4 @@ export default async function Home({ params: { lang } }: { params: { lang: 'en' 
         </main>
         </>
   );
-}
-
-export async function generateStaticParams() {
-    return [{ lang: 'en' }, { lang: 'ru' }];
 }

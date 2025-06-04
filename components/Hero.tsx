@@ -85,7 +85,7 @@ const Hero = () => {
                     {/* Tagline */}
                     <div className="h-fit">
                         <p className="relative font-robotron text-white leading-none text-[19px]"
-                           children={t.hero.section1.text1}/>
+                           children={t('hero.section1.text1')}/>
                         <TextLoop className="font-robotron text-white text-[19px] overflow-y-clip">
                             <span> звукорежиссер </span>
                             <span> композтор </span>

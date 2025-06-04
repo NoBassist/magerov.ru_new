@@ -5,7 +5,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
-import Translations from '@/app/api/globals/Translations'
+import Pages from '@/app/api/globals/Pages'
 import sharp from 'sharp'
 
 import { Users } from './collections/Users'
@@ -22,7 +22,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media],
-  globals: [Translations],
+  globals: [Pages],
   localization: {
     locales: ['ru', 'en'],
     defaultLocale: 'ru',

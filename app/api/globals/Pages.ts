@@ -1,12 +1,23 @@
-// /globals/Translations.ts
+// /globals/Pages.ts
 import type { GlobalConfig } from 'payload';
+import { pack, unpack } from './i18nHooks';
 
-const Translations: GlobalConfig = {
-  slug: 'translations',                 // /api/globals/translations
-  label: 'Site Translations',
-  access: { read: () => true },         // public read, no auth needed for Next
+const Pages: GlobalConfig = {
+  slug: 'pages',                 // /api/globals/translations
+  label: 'Pages',
+  access: { read: () => true },      // public read, no auth needed for Next
+  hooks: {
+    beforeChange: [pack],   // собираем fields → raw
+    afterRead: [unpack], // raw → fields (для UI)
+  },
   fields: [
-    {
+      {
+        name: 'raw',          // скрытый JSON-объект, реальное хранилище
+        type: 'json',
+        localized: true,
+        admin: { hidden: true },
+      },
+      {
       type: 'tabs',
       tabs: [
         // ---------- HERO ----------
@@ -43,7 +54,7 @@ const Translations: GlobalConfig = {
                   name: 'section2',
                   label: 'Section 2',
                   fields: [
-                    { name: 'text1', type: 'text', localized: true },
+                    { name: 'text1', type: 'richText', localized: true },
                   ],
                 },
               ],
@@ -61,7 +72,7 @@ const Translations: GlobalConfig = {
               label: 'About',
               fields: [
                 { name: 'title', type: 'text', localized: true },
-                { name: 'text', type: 'text', localized: true },
+                { name: 'text', type: 'richText', localized: true },
               ],
             },
           ],
@@ -73,4 +84,4 @@ const Translations: GlobalConfig = {
   ],
 };
 
-export default Translations;
+export default Pages;
