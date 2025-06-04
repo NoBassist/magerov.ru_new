@@ -10,7 +10,6 @@ import Contacts from "@/components/Contacts";
 export default async function Home() {
 
     return (
-        <>
         <main className= 'overflow-hidden'>
             {/*<Navbar />*/}
             <Hero />
@@ -19,6 +18,5 @@ export default async function Home() {
             {/*<Music />*/}
             {/*<Contacts />*/}
         </main>
-        </>
   );
 }

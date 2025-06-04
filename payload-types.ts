@@ -85,10 +85,10 @@ export interface Config {
     defaultIDType: string;
   };
   globals: {
-    translations: Translation;
+    pages: Page;
   };
   globalsSelect: {
-    translations: TranslationsSelect<false> | TranslationsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
   };
   locale: 'ru' | 'en';
   user: User & {
@@ -277,9 +277,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "translations".
+ * via the `definition` "pages".
  */
-export interface Translation {
+export interface Page {
   id: string;
   hero?: {
     section1?: {
@@ -304,21 +304,7 @@ export interface Translation {
             id?: string | null;
           }[]
         | null;
-      text3?: {
-        root: {
-          type: string;
-          children: {
-            type: string;
-            version: number;
-            [k: string]: unknown;
-          }[];
-          direction: ('ltr' | 'rtl') | null;
-          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-          indent: number;
-          version: number;
-        };
-        [k: string]: unknown;
-      } | null;
+      text3?: string | null;
     };
     section2?: {
       text1?: {
@@ -339,21 +325,7 @@ export interface Translation {
     };
   };
   about?: {
-    title?: {
-      root: {
-        type: string;
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
+    title?: string | null;
     text?: {
       root: {
         type: string;
@@ -375,9 +347,9 @@ export interface Translation {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "translations_select".
+ * via the `definition` "pages_select".
  */
-export interface TranslationsSelect<T extends boolean = true> {
+export interface PagesSelect<T extends boolean = true> {
   hero?:
     | T
     | {

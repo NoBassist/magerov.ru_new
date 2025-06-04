@@ -1,22 +1,11 @@
 // /globals/Pages.ts
 import type { GlobalConfig } from 'payload';
-import { pack, unpack } from './i18nHooks';
 
 const Pages: GlobalConfig = {
   slug: 'pages',                 // /api/globals/translations
   label: 'Pages',
   access: { read: () => true },      // public read, no auth needed for Next
-  hooks: {
-    beforeChange: [pack],   // собираем fields → raw
-    afterRead: [unpack], // raw → fields (для UI)
-  },
   fields: [
-      {
-        name: 'raw',          // скрытый JSON-объект, реальное хранилище
-        type: 'json',
-        localized: true,
-        admin: { hidden: true },
-      },
       {
       type: 'tabs',
       tabs: [

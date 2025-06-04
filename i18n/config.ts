@@ -1,36 +1,20 @@
-import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
-import HttpBackend from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import type { InitOptions } from 'i18next';
+// i18n/config.ts
+import i18n, { InitOptions } from 'i18next';
 
-export function initClientI18n() {
-    if (!i18n.isInitialized) {
-        i18n
-            .use(HttpBackend)          // грузит JSON‑файлы /locales/{{lng}}/{{ns}}.json
-            .use(LanguageDetector)     // читает cookie «lang», <html lang>, navigator…
-            .use(initReactI18next)
-            .init({
-                fallbackLng: 'ru',
-                supportedLngs: ['ru', 'en'],
-                ns: ['translation'],
-                defaultNS: 'translation',
-                detection: {
-                    order: ['cookie', 'htmlTag', 'navigator'],
-                    lookupCookie: 'lang',
-                    caches: ['cookie']
-                },
-                backend: {
-                    loadPath: '/locales/{{lng}}/{{ns}}.json'  // файлы лежат в public/locales
-                },
-                interpolation: {
-                    escapeValue: false
-                }
-            } as InitOptions);
-    }
-    return i18n;
+const options: InitOptions = {
+  resources: {},            // словари добавим вручную (loadAllLocales)
+  fallbackLng: 'ru',
+  detection: {
+    order: ['cookie', 'htmlTag', 'navigator'],
+    caches: ['cookie'],
+    lookupCookie: 'lang',   // корректное имя поля вместо cookieName
+  },
+  interpolation: { escapeValue: false },
+  react: { useSuspense: false },   // будет активировано только в браузере
+};
+
+if (!i18n.isInitialized) {
+  i18n.init(options);
 }
 
-/* Синглтон: сразу инициализируем, чтобы можно было
-   import i18n from '@/i18n/config' */
-export default initClientI18n();
+export default i18n;
